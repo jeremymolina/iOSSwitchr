@@ -39,7 +39,7 @@ class DeepLinkHandler {
             if let unwrappedURL = getOperaURL(from: urlString) {
                 newURL = unwrappedURL
             }
-            
+                   
         default:
             return
         }
@@ -70,8 +70,8 @@ class DeepLinkHandler {
     
     private static func getEdgeURL(from oldURLString: String) -> URL? {
         let existingScheme = oldURLString.components(separatedBy: ":").first ?? "https"
-        let chromeScheme = existingScheme == "http" ? "microsoft-edge-http" : "microsoft-edge-https"
-        let newURLString = oldURLString.replacingOccurrences(of: existingScheme, with: chromeScheme)
+        let edgeScheme = existingScheme == "http" ? "microsoft-edge-http" : "microsoft-edge-https"
+        let newURLString = oldURLString.replacingOccurrences(of: existingScheme, with: edgeScheme)
         
         guard let url = URL(string: newURLString) else {
             return nil
@@ -91,8 +91,8 @@ class DeepLinkHandler {
     
     private static func getOperaURL(from oldURLString: String) -> URL? {
         let existingScheme = oldURLString.components(separatedBy: ":").first ?? "https"
-        let chromeScheme = existingScheme == "http" ? "touch-http" : "touch-https"
-        let newURLString = oldURLString.replacingOccurrences(of: existingScheme, with: chromeScheme)
+        let operaScheme = existingScheme == "http" ? "touch-http" : "touch-https"
+        let newURLString = oldURLString.replacingOccurrences(of: existingScheme, with: operaScheme)
         
         guard let url = URL(string: newURLString) else {
             return nil
@@ -101,3 +101,4 @@ class DeepLinkHandler {
         return url
     }
 }
+
